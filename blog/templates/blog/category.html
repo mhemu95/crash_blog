@@ -1,0 +1,44 @@
+{% extends "core/base.html" %}
+
+
+{% block title %} {{category.title}} {% endblock title %}
+
+
+{% block content %}
+
+<section class="hero ">
+    <div class="hero-body">
+        <div class="container">
+            <section class="section">
+                <div class="columns">
+                    <div class="column is-5 is-offset-1">
+
+                        {% for post in posts %}
+
+                        <div class="content is-medium">
+                            <!-- onClick will take to the post details again -->
+                            <a href=" {% url 'post_details' post.category.slug post.slug %}">
+                                <h2 class="subtitle is-5 has-text-grey"> {{post.created_at |timesince}} ago </h2>
+                                <h1 class="title has-text-black is-3">{{post.title}}</h1>
+                                <p class="has-text-dark">
+                                    {{post.intro}}
+                                </p>
+                            </a>
+                        </div>
+
+                        {% empty %}
+                        
+                        <div class="content">
+                            <p> There is no post in this category... </p>
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
