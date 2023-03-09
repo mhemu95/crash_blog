@@ -30,6 +30,7 @@ class Post(models.Model):
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=15, choices= CHOICES_STATUS, default=ACTIVE)
+    image = models.ImageField(upload_to='uploads/', blank=True, null=True)
 
     class Meta:
         verbose_name = 'Post'

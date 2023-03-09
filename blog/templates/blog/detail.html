@@ -10,6 +10,11 @@
     <div class="hero-body">
         <div class="container">
             <section class="section">
+                {% if post.image %}
+                    <figure class="image mb-5">
+                        <img src="{{post.image.url}}" alt="image">
+                    </figure>
+                {% endif %}
                 <div class="columns">
                     <div class="column is-5 is-offset-1">
                         <div class="content is-medium">
