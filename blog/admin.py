@@ -29,3 +29,6 @@ class CommentAdmin(admin.ModelAdmin):
 admin.site.register(Post, PostAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Comment, CommentAdmin)
+
+# todo: rewrite the admin file code.
+# todo: start from admin.py from book django 4 by example

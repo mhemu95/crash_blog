@@ -24,14 +24,14 @@ def post_details(request, category_slug, slug):
 
 def category_detail(request, slug):
     category = get_object_or_404(Category, slug=slug)
-    posts = category.posts.filter(status=Post.ACTIVE)
+    posts = category.posts.filter(status=Post.Status.PUBLISHED)
     return render(request, 'blog/category.html', {'category': category, 'posts': posts})
 
 
 def search(request):
     query = request.GET.get('query', '')
 
-    posts = Post.objects.filter(status=Post.ACTIVE).filter(
+    posts = Post.objects.filter(status=Post.Status.PUBLISHED).filter(
         Q(title__icontains=query) | Q(intro__icontains=query) | Q(body__icontains=query))
 
     return render(request, 'blog/search.html', {'query': query, 'posts': posts})
