@@ -9,8 +9,10 @@ class commentInline(admin.TabularInline):
 
 class PostAdmin(admin.ModelAdmin):
     search_fields = ['title', 'intro', 'body']
-    list_display = ['title', 'slug', 'category', 'created_at', 'status']
+    list_display = ['title', 'slug', 'category', 'published_at', 'status']
     list_filter = ['slug', 'created_at', 'status']
+    date_hierarchy = 'published_at'
+    ordering = ['status', 'published_at']
     inlines = [commentInline]
     prepopulated_fields = {'slug': ('title',)}
 

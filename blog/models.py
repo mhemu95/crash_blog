@@ -38,6 +38,9 @@ class Post(models.Model):
     status = models.CharField(max_length=2, choices=Status.choices, default=Status.DRAFT)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
 
+    objects = models.Manager()  # the default manager
+    published = PublishedManager()  # our published manager
+
     class Meta:
         verbose_name = 'Post'
         verbose_name_plural = 'Posts'
@@ -66,5 +69,4 @@ class Comment(models.Model):
         ordering = ('-created_at',)
 
     def __str__(self):
-        """Unicode representation of Comment."""
         return self.name
