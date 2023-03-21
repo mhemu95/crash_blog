@@ -9,9 +9,12 @@ from blog.models import Post
 #
 #     return render(request, "core/frontpage.html", {'posts': posts})
 
+
 class FrontpageView(ListView):
     queryset = Post.published.all()
-
+    context_object_name = 'posts'
+    # paginate_by
+    template_name = 'core/frontpage.html'
 
 
 def about(request):
